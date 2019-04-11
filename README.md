@@ -1,5 +1,5 @@
-# canon-api
-Canon Camera Control API (CCAPI)
+canon-api
+# Canon Camera Control API (CCAPI)
 
 More information @ [{DPHacks}](https://dphacks.com/how-to-canon-camera-control-api-ccapi/) website - a website for everything camera hack related
 
