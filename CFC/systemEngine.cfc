@@ -15,6 +15,10 @@ component output="false" displayname="Get Camera Info"  {
 			sleep(delay);
 		}
 
+		cameraAPI = createObject("component", "CFC/cameraEngine");
+
+		cameraAPI.postLiveView();
+
 		intervalShooting();
 
 	}
@@ -22,26 +26,29 @@ component output="false" displayname="Get Camera Info"  {
 
 	public function intervalShooting(){
 
-		intStartTime = GetTickCount();
+		//intStartTime = GetTickCount();
 
 	
 		if(session.sequenceNumber LTE session.numberOfShots){
-
-			session.sequenceNumber = session.sequenceNumber+1;
 
 			sleep(session.wait);
 
 			shootingAPI = createObject("component", "CFC/shootingEngine");
 
-			shutter =  shootingAPI.tripShutter("","",false);
+			shutter =  shootingAPI.tripShutter("","",session.focusOn);
 
-			cfthread( name="intervalSequence_#session.sequenceNumber#" ){
+			session.sequenceNumber = session.sequenceNumber+1;
 
-				intervalShooting();
-
-			}
+			intervalShooting();
 
 		}else{
+
+			cameraAPI = createObject("component", "CFC/cameraEngine");
+
+			liveview = cameraAPI.postLiveView(cameraLCD='on');
+
+			dump(liveview);
+
 			session.numberOfShots = 0;
 
 			session.sequenceNumber = 0;

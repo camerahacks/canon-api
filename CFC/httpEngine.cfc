@@ -47,12 +47,12 @@ component output="false" displayname="Send HTTP Request"  {
 			
 			bodyParam = serializeJSON(arguments.bodyParam);
 
-			dump(bodyParam);
-
 			httpService.addParam(type = 'body', value = bodyParam);
 		}
 
 		httpRequest = httpService.send().getPrefix();
+
+		dump(httpRequest);
 
 		if(isjSON(httpRequest.filecontent)AND(httpRequest.status_code IS '200')){
 			return deserializeJSON(httpRequest.filecontent);	
