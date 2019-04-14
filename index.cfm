@@ -33,7 +33,9 @@
 
 systemAPI = createObject("component", "CFC/systemEngine");
 
-command = systemAPI.intervalSequence(10,1000,1);
+command = systemAPI.intervalSequence(3,4,1);
+
+dump(session);
 
 </cfscript>
 

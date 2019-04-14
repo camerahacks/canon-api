@@ -4,7 +4,7 @@ component output="false" displayname="Get Camera Info"  {
 
 		session.numberOfShots = arguments.numberOfShots;
 
-		session.wait = arguments.wait;
+		session.wait = arguments.wait*1000;
 
 		session.sequenceNumber = 1;
 
@@ -31,19 +31,15 @@ component output="false" displayname="Get Camera Info"  {
 
 			sleep(session.wait);
 
-			//trip the shutter here
+			shootingAPI = createObject("component", "CFC/shootingEngine");
+
+			shutter =  shootingAPI.tripShutter("","",false);
 
 			cfthread( name="intervalSequence_#session.sequenceNumber#" ){
-
-				session.a = session.a+1;
 
 				intervalShooting();
 
 			}
-
-			dump(session);
-
-			cfflush();
 
 		}else{
 			session.numberOfShots = 0;
