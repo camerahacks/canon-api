@@ -12,7 +12,7 @@
 	<cffunction name="onApplicationStart" output="false">
 		<!---Woocommerce Information --->
 		<cfset application.ccapi = structNew()>
-		<cfset application.ccapi.ip = "192.168.1.14">
+		<cfset application.ccapi.ip = "192.168.1.13">
 		<cfset application.ccapi.port = "8080">
 		<cfset application.ccapi.version = "ver100">
 

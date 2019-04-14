@@ -316,4 +316,23 @@ component output="false" displayname="Get Camera Info"  {
 		return beep;
 	}
 
+	public function postLiveView(ip, port){
+
+		method = 'POST'
+
+		endpoint = '/ccapi/{wild:version}/shooting/liveview';
+
+		bodyParam = structNew("ordered");
+
+		bodyParam['liveviewsize'] = 'small';
+		bodyParam['cameradisplay'] = 'off';
+
+		requestAPI = createObject("component","CFC/httpEngine");
+
+		liveView = requestAPI.sendHTTP(method, endpoint, bodyParam);
+
+		return liveView;
+
+	}
+
 }

@@ -47,6 +47,8 @@ component output="false" displayname="Send HTTP Request"  {
 			
 			bodyParam = serializeJSON(arguments.bodyParam);
 
+			dump(bodyParam);
+
 			httpService.addParam(type = 'body', value = bodyParam);
 		}
 
