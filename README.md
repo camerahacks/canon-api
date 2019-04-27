@@ -10,6 +10,7 @@ On February 2019, Canon released the official CCAPI which allows tinkerers, hack
 Cameras supporting the API:
 - Canon EOS RP
 - Canon PowerShot SX70 HS
+- Canon EOS Rebel SL3
 
 The API can be used to change camera settings, control the camera, and retrieve pictures.
 
