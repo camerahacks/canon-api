@@ -11,6 +11,8 @@ Cameras supporting the API:
 - Canon EOS RP
 - Canon PowerShot SX70 HS
 - Canon EOS Rebel SL3
+- Canon PowerShot G5 Mark II
+- Canon PowerShot G7 Mark III
 
 The API can be used to change camera settings, control the camera, and retrieve pictures.
 
