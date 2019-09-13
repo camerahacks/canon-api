@@ -1,6 +1,6 @@
 component output="false" displayname="Get Camera Info"  {
 
-	public function intervalSequence(numberOfShots, wait, delay){
+	public function intervalShooting(numberOfShots, wait, delay){
 
 		session.numberOfShots = arguments.numberOfShots;
 
@@ -15,20 +15,26 @@ component output="false" displayname="Get Camera Info"  {
 			sleep(delay);
 		}
 
-		cameraAPI = createObject("component", "CFC/cameraEngine");
+		//Turn off the LCD to save energy
+		if(session.LCDstatus IS 'off'){
+			cameraAPI = createObject("component", "CFC/cameraEngine");
 
-		cameraAPI.postLiveView();
+			cameraAPI.postLiveView(session.LCDstatus);
+		}
 
-		intervalShooting();
+		//Start shooting the sequence
+		session.isIntActive = true;
+
+		intervalSequence();
+
+		return "Interval shooting started";
 
 	}
 
 
-	public function intervalShooting(){
+	public function intervalSequence(){
 
-		//intStartTime = GetTickCount();
-
-	
+		//Continue if there are shots remaining
 		if(session.sequenceNumber LTE session.numberOfShots){
 
 			sleep(session.wait);
@@ -39,22 +45,44 @@ component output="false" displayname="Get Camera Info"  {
 
 			session.sequenceNumber = session.sequenceNumber+1;
 
-			intervalShooting();
+			//This loop can go on for a while. Putting a safety switch to cancel shooting.
+			if(NOT isDefined('application.cancelAll')){
+				intervalSequence();
+			}
 
 		}else{
 
 			cameraAPI = createObject("component", "CFC/cameraEngine");
 
-			liveview = cameraAPI.postLiveView(cameraLCD='on');
-
-			dump(liveview);
+			//Turn on the LCD when done shooting
+			liveview = cameraAPI.postLiveView(cameraLCD='on'); 
 
 			session.numberOfShots = 0;
 
 			session.sequenceNumber = 0;
 
-			session.wait = 0;
+			//Flag as done shooting
+			session.isIntActive = false;
+
 		}
+
+	}
+
+	public function cancelInterval(){
+
+		//setting the number of shots to zero will cancel the interval loop
+		//This is user/session level switch
+		session.numberOfShots = 0;
+
+		return session.numberOfShots;
+
+	}
+
+	public function setLCDPref (required LCDstatus='off'){
+
+		session.LCDstatus = arguments.LCDstatus;
+
+		return "LCD will be "&session.LCDstatus&" during shooting.";
 
 	}
 

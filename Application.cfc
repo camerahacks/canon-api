@@ -18,6 +18,11 @@
 
 	</cffunction>
 
+	<cffunction name="onSessionStart" output="false">
+		<cfset session.LCDstatus = 'off'>
+
+	</cffunction>
+
 	<!---OnRequest Start Function --->
 	<cffunction name="OnRequestStart">
     	<cfargument name = "request" required="true"/>

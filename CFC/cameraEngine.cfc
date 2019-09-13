@@ -316,7 +316,7 @@ component output="false" displayname="Get Camera Info"  {
 		return beep;
 	}
 
-	public function postLiveView(ip, port, liveviewsize, cameraLCD){
+	public function postLiveView(ip, port, liveviewsize='small', cameraLCD='off'){
 
 		method = 'POST'
 
@@ -324,18 +324,10 @@ component output="false" displayname="Get Camera Info"  {
 
 		bodyParam = structNew("ordered");
 
-		if(isDefined('arguments.liveviewsize')){
-			bodyParam['liveviewsize'] = arguments.liveviewsize;
-		}else{
-			bodyParam['liveviewsize'] = 'small';
-		}
-
-		if(isDefined('arguments.cameraLCD')){
-			bodyParam['cameradisplay'] = arguments.cameraLCD;
-		}else{
-			bodyParam['cameradisplay'] = 'off';
-		}
-
+		bodyParam['liveviewsize'] = arguments.liveviewsize;
+		
+		bodyParam['cameradisplay'] = arguments.cameraLCD;
+		
 		requestAPI = createObject("component","CFC/httpEngine");
 
 		liveView = requestAPI.sendHTTP(method, endpoint, bodyParam);
