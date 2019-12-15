@@ -1,4 +1,4 @@
-component output="false" displayname="Get Camera Info"  {
+component output="false" displayname="General system operations"  {
 
 	public function intervalShooting(numberOfShots, wait, delay){
 
