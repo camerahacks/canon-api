@@ -4,9 +4,8 @@
 	<cfset this.sessionTimeout = createTimeSpan(1, 0, 0, 0) >
 	<cfset this.loginStorage = "session" >
 	
-	<!---UDF Libraries
-	<cfset structAppend(request,createObject( "component", "CFC/dateUtils" )) />
-	 --->
+	<!---UDF Libraries--->
+	<cfset structAppend(request, createObject("component", "CFC/listAPI"))>
 
 	<!---OnApplication Start Function --->
 	<cffunction name="onApplicationStart" output="false">
@@ -20,14 +19,17 @@
 
 	<cffunction name="onSessionStart" output="false">
 		<cfset session.LCDstatus = 'off'>
+		<cfset session.ccapiStart = request.getAllAPIs(application.ccapi.ip, application.ccapi.port)>
 
 	</cffunction>
 
 	<!---OnRequest Start Function --->
 	<cffunction name="OnRequestStart">
+
     	<cfargument name = "request" required="true"/>
 			<cfif isDefined("url.init")>
 				<cfset onApplicationStart()>
+				<cfset onSessionStart()>
 			</cfif>
 	</cffunction>
 </cfcomponent>
