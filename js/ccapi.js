@@ -6,6 +6,10 @@ function intervalometer(numberOfShots, wait, delay){
 
 }
 
+function downloadFile(){
+	
+}
+
 function tripTheShutter(){
 
 	console.log("Shutter Tripped");
