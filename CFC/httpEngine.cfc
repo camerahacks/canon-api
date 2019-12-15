@@ -52,8 +52,6 @@ component output="false" displayname="Send HTTP Request"  {
 
 		httpRequest = httpService.send().getPrefix();
 
-		dump(httpRequest);
-
 		if(isjSON(httpRequest.filecontent)AND(httpRequest.status_code IS '200')){
 			return deserializeJSON(httpRequest.filecontent);	
 		} else {

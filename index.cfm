@@ -1,5 +1,9 @@
 <cfscript>
-if(session.)
+
+storageAPI = createObject("component", " CFC/storageEngine");
+
+directories = storageAPI.getAllContent(type='all');
+
 </cfscript>
 
 <!DOCTYPE html>
@@ -10,12 +14,12 @@ if(session.)
 	</head>
 
 	<body>
-		<button type="button" onclick="intervalometer(2,2000)">Start Shooting</button>
+		<!---<button type="button" onclick="intervalometer(2,2000)">Start Shooting</button>--->
 
-		<!---<cfloop index="i" from="1" to="#arrayLen(directories)#">
+		<cfloop index="i" from="1" to="#arrayLen(directories)#">
 			<cfoutput>
-				<img src="#directories[i]#?kind=thumbnail">
+				<a href="" onclick="return false" ondblclick="location.href='#directories[i]#'"><img src="#directories[i]#?kind=thumbnail"></a>
 			</cfoutput>
-		</cfloop>--->
+		</cfloop>
 	</body>
 </html>

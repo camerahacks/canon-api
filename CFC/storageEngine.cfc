@@ -94,4 +94,18 @@ component output="false" displayname="Process Storage Info"  {
 
 	}
 
+	public function getContent(required mediaAddress){
+
+		method = 'GET';
+
+		endpoint = arguments.mediaAddress;
+
+		requestAPI = createObject("component","CFC/httpEngine");
+
+		content = requestAPI.sendHTTP(method, endpoint);
+
+		return content;
+
+	}
+
 }
