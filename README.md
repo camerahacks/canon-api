@@ -15,6 +15,8 @@ Cameras supporting the API:
 - Canon PowerShot G7 Mark III
 - EOS M200
 - EOS 90D
+- EOS M6 Mark II
+- EOS 1DX Mark III
 
 The API can be used to change camera settings, control the camera, and retrieve pictures.
 
