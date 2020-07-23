@@ -5,9 +5,13 @@ More information @ [{DPHacks}](https://dphacks.com/how-to-canon-camera-control-a
 
 ![Canon EOS RP - Camera Control API](https://i0.wp.com/dphacks.com/wp-content/uploads/2019/04/Canon-CCAPI-EOS-RP_1.jpg?resize=768%2C512&ssl=1 "Canon EOS RP - CCAPI")
 
-On February 2019, Canon released the official CCAPI which allows tinkerers, hackers, and developers to create software that interacts with Canon cameras using a web API.
+On February 2019, Canon released the official CCAPI which allows tinkerers, hackers, and developers to create software that interacts with Canon cameras using a web API. More recently, Canon relased version 1.1 of the API with support for wired connection.
 
 Cameras supporting the API:
+- Canon EOS R5
+- Canon EOS R6
+- Canon Rebel T8i
+- Canon Rebel SL3
 - Canon EOS RP
 - Canon PowerShot SX70 HS
 - Canon EOS Rebel SL3
